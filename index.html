@@ -8,102 +8,104 @@
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 
-<body>
-<header>
+<body class="home-page">
+<header class="header">
     <a href="menu.html" class="header-menu">
-        <img src="./img/icons8-cardápio-50.png" alt="Menu Hamburguer">
-        Menu
+        <img src="./img/icons8-cardápio-50.png" alt="Menu Hamburguer" class="header-menu__icon">
+        <span class="header-menu__text">Menu</span>
     </a>
 
-    <h1>Roster</h1>
+    <h1 class="header__title">Roster</h1>
 
     <nav class="header-icons">
-        <a href="perfil.html">
-            <img src="img/icons8-usuário-homem-com-círculo-24.png" alt="Perfil">
-            Perfil
+        <a href="perfil.html" class="header-icons__link" aria-label="Perfil">
+            <img src="img/icons8-usuário-homem-com-círculo-24.png" alt="" class="header-icons__icon">
+            <span class="header-icons__text">Perfil</span>
         </a>
-        <a href="#">
-            <img src="./img/bell_ring.png" alt="Sino">
+        <a href="#" class="header-icons__link" aria-label="Notificações">
+            <img src="./img/bell_ring.png" alt="" class="header-icons__icon">
         </a>
     </nav>
 </header>
 
 
-<main>
+<main class="home-main">
 
-    <!-- Saudação -->
-    <section class="saudacao">
+    <section class="home-greeting">
         <h2>Olá, Goret!</h2>
-        <h3>Tenha um excelente voo.</h3>
+        <p>Tenha um excelente voo.</p>
     </section>
 
-    <!-- Botões de ação -->
-    <ul class="acoes-lista">
-        <li>
-            <a href="boarding/boarding.html">
-                <img src="img/mala.png" alt="Embarque">
-                Embarque
-            </a>
-        </li>
-        <li>
-            <a href="trade/escolher_pessoa.html">
-                <img src="img/trade.png" alt="Troca">
-                Troca
-            </a>
-        </li>
-        <li>
-            <a href="LM/lm.html">
-                <img src="img/sol.png" alt="Licença médica">
-                Licença
-            </a>
-        </li>
-    </ul>
-
-    <!-- Jornada -->
-    <section class="jornada-header">
-        <h2>Sua Jornada</h2>
-        <a href="ver_escala.html">Ver escala</a>
-    </section>
-
-    <!-- Card de voos -->
-    <article class="card-jornada">
-        <h3 hidden>Jornada do dia</h3>
-        <header class="card-jornada-topo">
-            <span>04/03/2026</span>
-            <span>Base: GRU</span>
-        </header>
-
-        <ul class="voos-lista">
-            <li class="voo-item">
-                <span class="voo-indicador"></span>
-                <div class="voo-card">
-                    <p class="voo-horario">8:45 ▶ 10:30</p>
-                    <strong class="voo-rota">GRU → GIG</strong>
-                </div>
+    <section class="home-actions" aria-label="Ações rápidas">
+        <h2 class="home-section-title">Ações rápidas</h2>
+        <ul class="acoes-lista">
+            <li>
+                <a href="boarding/boarding.html">
+                    <img src="img/mala.png" alt="" aria-hidden="true">
+                    <span>Embarque</span>
+                </a>
             </li>
-
-            <li class="voo-item">
-                <span class="voo-indicador"></span>
-                <div class="voo-card">
-                    <p class="voo-horario">12:00 ▶ 14:00</p>
-                    <strong class="voo-rota">GIG → GRU</strong>
-                </div>
+            <li>
+                <a href="trade/escolher_pessoa.html">
+                    <img src="img/trade.png" alt="" aria-hidden="true">
+                    <span>Troca</span>
+                </a>
+            </li>
+            <li>
+                <a href="LM/lm.html">
+                    <img src="img/sol.png" alt="" aria-hidden="true">
+                    <span>Licença</span>
+                </a>
             </li>
         </ul>
-    </article>
+    </section>
 
-    <!-- Status / Fadigômetro -->
-    <a href="status.html" class="status-card">
-        <p class="status-titulo">
-            <img src="img/termometro.png" alt="Fadigômetro">
-            Status
-        </p>
-        <meter class="status-barra" min="0" max="100" value="55"></meter>
-        <p class="status-info">
-            <span>65h voadas no mês</span>
-            <span>5 voos restantes</span>
-        </p>
-    </a>
+    <section class="home-jornada">
+        <div class="jornada-header">
+            <h2>Sua Jornada</h2>
+            <a href="ver_escala.html">Ver escala</a>
+        </div>
+
+        <article class="card-jornada">
+            <h3 hidden>Jornada do dia</h3>
+            <header class="card-jornada-topo">
+                <span>04/03/2026</span>
+                <span>Base: GRU</span>
+            </header>
+
+            <ul class="voos-lista">
+                <li class="voo-item">
+                    <span class="voo-indicador" aria-hidden="true"></span>
+                    <div class="voo-card">
+                        <p class="voo-horario">8:45 ▶ 10:30</p>
+                        <strong class="voo-rota">GRU → GIG</strong>
+                    </div>
+                </li>
+
+                <li class="voo-item">
+                    <span class="voo-indicador" aria-hidden="true"></span>
+                    <div class="voo-card">
+                        <p class="voo-horario">12:00 ▶ 14:00</p>
+                        <strong class="voo-rota">GIG → GRU</strong>
+                    </div>
+                </li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="home-status">
+        <a href="status.html" class="status-card">
+            <p class="status-titulo">
+                <img src="img/termometro.png" alt="" aria-hidden="true">
+                <span>Status</span>
+            </p>
+            <meter class="status-barra" min="0" max="100" value="55"></meter>
+            <p class="status-info">
+                <span>65h voadas no mês</span>
+                <span>5 voos restantes</span>
+            </p>
+        </a>
+    </section>
 
 </main>
 

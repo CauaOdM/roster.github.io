@@ -8,27 +8,34 @@
 </head>
 <body>
     <header class="header">
-        <a class="header-menu" href="../menu.html">
-            <img src="../img/icons8-cardápio-50.png" alt="Menu Hamburguer">Menu
+        <a href="../menu.html" class="header-menu">
+            <img src="../img/icons8-cardápio-50.png" alt="Menu Hamburguer" class="header-menu__icon">
+            <span class="header-menu__text">Menu</span>
         </a>
-        <h1 class="header-title">Roster</h1>
-        <a class="header-perfil" href="../perfil.html">
-            <img src="../img/icons8-usuário-homem-com-círculo-24.png" alt="Perfil">Perfil
-        </a>
-        <a class="header-notificacao" href="#">
-            <img src="../img/bell_ring.png" alt="Sino">
-        </a>
+
+        <h1 class="header__title">Roster</h1>
+
+        <nav class="header-icons">
+            <a href="../perfil.html" class="header-icons__link">
+                <img src="../img/icons8-usuário-homem-com-círculo-24.png" alt="Perfil" class="header-icons__icon">
+                <span>Perfil</span>
+            </a>
+            <a href="#" class="header-icons__link" aria-label="Notificações">
+                <img src="../img/bell_ring.png" alt="" class="header-icons__icon">
+            </a>
+        </nav>
     </header>
 
     <main class="confirmacao-main">
-        <h2 class="confirmacao-titulo">Solicitacao enviada com sucesso!</h2>
-        <p class="confirmacao-descricao">Sua oferta de jornada foi registrada e será analisada em breve.</p>
-        <a class="btn-nova-oferta" href="escolher_pessoa.html">Fazer nova oferta</a>
+        <span class="confirmacao-check">✔</span>
+        <h2 class="confirmacao-titulo">Solicitacao enviada!</h2>
+        <p class="confirmacao-subtitulo">Sua oferta de jornada foi registrada e será analisada em breve.</p>
+        <a class="confirmacao-botao" href="escolher_pessoa.html">Fazer nova oferta</a>
     </main>
 
     <footer class="footer-padrao">
         <a class="link-voltar" href="../index.html">
-            <img src="../img/icons8-à-esquerda-dentro-de-um-círculo-24.png" alt="voltar a tela inicial">voltar a tela inicial
+            <img src="../img/icons8-à-esquerda-dentro-de-um-círculo-24.png" alt="voltar a tela inicial">Inicio
         </a>
         <p class="footer-copyright">Copyright © 2026 Roster. Todos os direitos reservados.</p>
     </footer>

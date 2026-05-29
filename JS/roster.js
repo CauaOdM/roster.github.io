@@ -347,7 +347,7 @@
 
         loadingTimer = window.setTimeout(function () {
             hideLoadingUI();
-        }, 350);
+        }, 250);
     }
 
     function initLoading() {
@@ -368,7 +368,7 @@
 
         window.addEventListener('load', function () {
             var elapsed = Date.now() - startTime;
-            var delay = Math.max(0, 500 - elapsed);
+            var delay = Math.max(0, 350 - elapsed);
 
             window.setTimeout(function () {
                 scheduleHideLoading();
@@ -672,75 +672,38 @@
     }
 
     function buildChatReply(message) {
-        var lower = message.toLowerCase();
+        var resposta = 'Posso ajudar com bagagem, documentação, prioridade de embarque e orientações de bordo.';
 
-        if (lower.indexOf('bagagem') !== -1) {
-            return 'Explique a franquia permitida com calma e ofereça a alternativa de despacho quando necessário.';
+        if (message.trim().toLowerCase().indexOf('oi') === 0) {
+            return 'Oi, Goret! ' + resposta;
         }
 
-        if (lower.indexOf('document') !== -1) {
-            return 'Confirme o documento exigido pela companhia e valide se todos os dados estão legíveis.';
-        }
-
-        if (lower.indexOf('emerg') !== -1) {
-            return 'Acione o procedimento interno, mantenha a comunicação objetiva e siga a orientação da cabine.';
-        }
-
-        return 'Posso ajudar com bagagem, documentação, prioridade de embarque e orientações operacionais.';
+        return resposta;
     }
 
-    function renderChatMessage(container, role, text) {
+    function renderChatMessage(messages, role, text) {
         var bubble = document.createElement('div');
 
         bubble.className = 'chat-bubble chat-bubble--' + role;
         bubble.textContent = text;
-        container.appendChild(bubble);
-        container.scrollTop = container.scrollHeight;
+        messages.appendChild(bubble);
+        messages.scrollTop = messages.scrollHeight;
     }
 
     function initChat() {
         var form = document.querySelector('.chat-form');
         var input = document.querySelector('.chat-input');
         var messages = document.querySelector('.chat-messages');
-        var params;
-        var initialMessage;
-        var history;
-        var index;
+        var params = new URLSearchParams(window.location.search);
+        var initialMessage = params.get('mensagem');
 
         if (!form || !input || !messages) {
             return;
         }
 
-        params = new URLSearchParams(window.location.search);
-        initialMessage = params.get('mensagem') || '';
-        history = [];
-
-        try {
-            history = JSON.parse(safeGet('chat-history') || '[]');
-        } catch (error) {
-            history = [];
-        }
-
-        if (history.length) {
-            messages.innerHTML = '';
-
-            for (index = 0; index < history.length; index += 1) {
-                renderChatMessage(messages, history[index].role, history[index].text);
-            }
-        }
-
-        function storeHistory() {
-            safeSet('chat-history', JSON.stringify(history));
-        }
-
         function addChatExchange(userText) {
-            var replyText = buildChatReply(userText);
-
-            history.push({ role: 'user', text: userText });
             renderChatMessage(messages, 'user', userText);
-            history.push({ role: 'ai', text: replyText });
-            renderChatMessage(messages, 'ai', replyText);
-            storeHistory();
+            renderChatMessage(messages, 'ai', buildChatReply(userText));
         }
 
         if (initialMessage) {
@@ -750,19 +713,15 @@
         form.addEventListener('submit', function (event) {
             var value = input.value.trim();
 
-            clearFeedback(form);
+            event.preventDefault();
 
             if (!value) {
-                event.preventDefault();
-                setFeedback(form, 'Digite uma mensagem para enviar à Roster AI.', 'error');
                 input.focus();
                 return;
             }
 
-            event.preventDefault();
             addChatExchange(value);
             input.value = '';
-            setFeedback(form, 'Mensagem enviada.', 'info');
         });
     }
 
@@ -1003,11 +962,67 @@
         });
     }
 
+    function rootRelativePrefix() {
+        var link = document.querySelector('link[href*="CSS/style.css"]');
+        var href = link ? link.getAttribute('href') : '';
+        var marker = href.indexOf('CSS/style.css');
+
+        if (marker === -1) {
+            return '';
+        }
+
+        return href.slice(0, marker);
+    }
+
+    function initNotifications() {
+        var prefix = rootRelativePrefix();
+        var bells = document.querySelectorAll('a[aria-label="Notificações"]');
+        var onNotificationsPage = currentPageName() === 'notificacoes.html';
+        var unread;
+        var index;
+
+        if (onNotificationsPage) {
+            safeSet('notif-unread', '0');
+        } else if (safeGet('notif-unread') === null) {
+            safeSet('notif-unread', '2');
+        }
+
+        unread = parseInt(safeGet('notif-unread'), 10);
+
+        if (isNaN(unread)) {
+            unread = 0;
+        }
+
+        for (index = 0; index < bells.length; index += 1) {
+            var bell = bells[index];
+            var badge;
+
+            bell.setAttribute('href', prefix + 'notificacoes.html');
+
+            if (onNotificationsPage || unread <= 0) {
+                continue;
+            }
+
+            badge = bell.querySelector('.header-notif-badge');
+
+            if (!badge) {
+                badge = document.createElement('span');
+                badge.className = 'header-notif-badge';
+                badge.setAttribute('aria-hidden', 'true');
+                bell.style.position = 'relative';
+                bell.appendChild(badge);
+            }
+
+            badge.textContent = unread > 9 ? '9+' : String(unread);
+        }
+    }
+
     ready(function () {
         initLoading();
         initMenu();
         storeLastPage();
         highlightMenuItem();
+        initNotifications();
         initTrade();
         initLm();
         initBoarding();

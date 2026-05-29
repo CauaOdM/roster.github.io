@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações — Roster</title>
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body class="notif-page">
+
+<header class="header">
+    <a href="menu.html" class="header-menu">
+        <img src="./img/icons8-cardápio-50.png" alt="Menu Hamburguer" class="header-menu__icon">
+        <span class="header-menu__text">Menu</span>
+    </a>
+
+    <h1 class="header__title">Roster</h1>
+
+    <nav class="header-icons">
+        <a href="perfil.html" class="header-icons__link" aria-label="Perfil">
+            <img src="img/icons8-usuário-homem-com-círculo-24.png" alt="" class="header-icons__icon">
+            <span class="header-icons__text">Perfil</span>
+        </a>
+        <a href="#" class="header-icons__link" aria-label="Notificações">
+            <svg class="header-icons__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" role="img" aria-hidden="true"><path fill="currentColor" d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6V11c0-3.07-1.64-5.64-4.5-6.32V4a1.5 1.5 0 1 0-3 0v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        </a>
+    </nav>
+</header>
+
+<main class="escolher-main">
+    <h2 class="escolher-titulo">Notificações</h2>
+
+    <ul class="escolher-lista">
+        <li class="escolher-item escolher-item--nova">
+            <a class="escolher-card" href="ver_escala.html">
+                <span class="escolher-nome">Alteração na sua escala</span>
+                <p class="escolher-jornada">O voo de 03/03 (GRU → CNF → GRU) foi atualizado. Toque para revisar.</p>
+            </a>
+        </li>
+
+        <li class="escolher-item escolher-item--nova">
+            <a class="escolher-card" href="boarding/boarding.html">
+                <span class="escolher-nome">Lembrete de embarque</span>
+                <p class="escolher-jornada">Confira o suporte de embarque e as dúvidas frequentes antes do voo.</p>
+            </a>
+        </li>
+
+        <li class="escolher-item">
+            <a class="escolher-card" href="trade/escolher_pessoa.html">
+                <span class="escolher-nome">Nova oferta de troca</span>
+                <p class="escolher-jornada">Colegas disponíveis para troca de jornada. Veja as opções compatíveis.</p>
+            </a>
+        </li>
+
+        <li class="escolher-item">
+            <a class="escolher-card" href="LM/lm.html">
+                <span class="escolher-nome">Solicitação de licença</span>
+                <p class="escolher-jornada">Sua solicitação de ausência está em análise pela companhia.</p>
+            </a>
+        </li>
+    </ul>
+</main>
+
+<footer class="footer">
+    <a href="index.html" class="back-link">
+        <img src="img/icons8-à-esquerda-dentro-de-um-círculo-24.png" alt="" class="back-link__icon">
+        <span class="back-link__text">Voltar ao início</span>
+    </a>
+    <p>Copyright © 2026 Roster. Todos os direitos reservados.</p>
+</footer>
+
+<script src="JS/roster.js" defer></script>
+
+</body>
+</html>

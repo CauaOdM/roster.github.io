@@ -1774,6 +1774,10 @@ meter.status-meter {
 }
 
 /* Chat Roster AI */
+body.chat-page {
+    height: 100vh;
+}
+
 .chat-page .chat-main {
     flex: 1;
     padding: 20px 16px 28px;
@@ -1807,6 +1811,8 @@ meter.status-meter {
     flex-direction: column;
     gap: 12px;
     flex: 1;
+    min-height: 0;
+    overflow-y: auto;
 }
 
 .chat-page .chat-bubble {
@@ -2248,4 +2254,26 @@ body .confirmacao-botao:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+/* ---- Selo de notificações não lidas no header ---- */
+.header-notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: var(--vermelho);
+    color: var(--branco);
+    font-size: 0.6rem;
+    font-weight: 800;
+    line-height: 16px;
+    text-align: center;
+}
+
+/* ---- Marcador sutil de notificação nova (borda do card) ---- */
+.escolher-item--nova {
+    border-color: var(--azul-principal);
 }
